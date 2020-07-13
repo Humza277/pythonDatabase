@@ -3,10 +3,10 @@ import pyodbc
 import sys
 
 class Database:
-    server = 'databases2.spartaglobal.academy'
-    database = 'Northwind'
-    username = 'SA'
-    password = 'Passw0rd2018'
+    server = secretFile.server
+    database = secretFile.database
+    username = secretFile.username
+    password = secretFile.password
 
     def __init__(self):
 
@@ -34,36 +34,21 @@ class Database:
         self.connections.close()
 
 def test():
-    command = input("please input sql command")
-    db = Database()
-    rows = db.enterSQL(command).fetchmany(30)
-    for r in rows:
-        print(r)
+    try:
+        command = input("please input sql command")
+        db = Database()
+        rows = db.enterSQL(command).fetchmany(30)
+        for r in rows:
+            print(r)
+    except pyodbc.ProgrammingError:
+        print("Command is incorrect")
+
+# good to have generaised exceptiuons
+# move the mothods to another class
 
 def avgprice():
     db = Database()
     print(db.avgprice())
 
 #test()
-#avgprice()
-
-
-
-
-# db = Database()
-# print(db.enterSQL("SELECT * FROM Customers").fetchmany(30))
-# cursor = connections.cursor()
-# query1 = cursor.execute("SELECT * FROM Customers")
-# rows = query1.fetchone()
-# # print(type(rows))
-# # print(rows[1])
-# # print(rows.ContactName)
-# row1 = query1.fetchmany(30)
-# print(row1)
-# print(query1)
-# rows = cursor.fetchall()
-# for row in row1:
-#     print(row)
-#
-# assignment calculate the average of all the pro
-# presentation how you have designed it after exam start working on the design
+avgprice()

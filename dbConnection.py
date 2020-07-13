@@ -1,6 +1,9 @@
 import pyodbc
 
-
+server = 'databases2.spartaglobal.academy'
+database = 'Northwind'
+username = 'SA'
+password = 'Passw0rd2018'
 
 
 try:
@@ -12,6 +15,8 @@ else:
     pass
 
 cursor = connections.cursor()
+
+
 query1 = cursor.execute("SELECT * FROM Customers")
 rows = query1.fetchone()
 #print(type(rows))
