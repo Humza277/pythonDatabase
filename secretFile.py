@@ -1,3 +1,4 @@
+# Server Details
 server = 'databases2.spartaglobal.academy'
 database = 'Northwind'
 username = 'SA'
